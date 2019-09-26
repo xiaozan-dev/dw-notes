@@ -1,20 +1,26 @@
-#############
-快速入门
-#############
+########
+数据仓库基础概念
+########
 
-本教程是对使用 Spark 的一个简单介绍。首先我们会通过 Spark 的交互式 shell 简单介绍一下 (Python 或 Scala) API，然后展示如何使用 Java、Scala 以及 Python 编写一个 Spark 应用程序。
+《Star Schema The Complete Reference》中提到了两种经典的做法来解决一对多的关系：
+
+
+* 简单方法，用税来举例子，如果税的类型数是固定的，例如一个商品最多6种税。就把这六种税在fact table中放置6个外键，指向税的dimension table。其实如果是column database，加属性应是很快的，所以即使税的种类不定，应该也可以处理。这种方法的问题很明显，就是导致fact table的属性过多。
+
+* bridge方法。 做一个中间表，即bridge表，只有两个属性：groupid和taxid, 一个groupid对应fact table中的一个item, 一个 taxid对应一个group中一种税。taxid对应到tax dimension table的表中的一行。如果需要加税的种类，直接在 tax dimension table里加就可以了。这样就可以应用到tax 种类数量不清楚的情况。
+
 
 为了方便参照该指南进行学习，请先到 `Spark 网站 <http://spark.apache.org/downloads.html>`_ 下载一个 Spark 发布包。由于我们暂时还不会用到 HDFS，所以你可以下载对应任意 Hadoop 版本的 Spark 发布包。
 
 .. attention:: Spark 2.0 版本之前, Spark 的核心编程接口是弹性分布式数据集(RDD)。Spark 2.0 版本之后, RDD 被 Dataset 所取代, Dataset 跟 RDD 一样也是强类型的, 但是底层做了更多的优化。Spark 目前仍然支持 RDD 接口, 你可以在 :ref:`rdd_programming_guide` 页面获得更完整的参考，但是我们强烈建议你转而使用比 RDD 有着更好性能的 Dataset。想了解关于 Dataset 的更多信息请参考 :ref:`sql_programming_guide`。
 
 
-********************************
+**********************
 使用 Spark Shell 进行交互式分析
-********************************
+**********************
 
 基础知识
-===================
+====
 
 Spark Shell 提供了一种简单的方式来学习 Spark API，同时它也是一个强大的交互式数据分析工具。Spark Shell 既支持 Scala(Scala 运行在 Java 虚拟机上，所以可以很方便的引用现有的 Java 库)也支持 Python。
 
@@ -104,7 +110,7 @@ Spark 最主要的抽象概念就是一个叫做 Dataset 的分布式数据集�
 
 
 更多 Dataset 算子
-===================
+=============
 
 Dataset action 和 transformation 算子可以用于更加复杂的计算。比方说我们想要找到文件中包含单词数最多的行。
 
@@ -164,7 +170,7 @@ Dataset action 和 transformation 算子可以用于更加复杂的计算。比�
   [Row(word=u'online', count=1), Row(word=u'graphs', count=1), ...]
 
 缓存
-===================
+==
 
 Spark 还支持把数据集拉到集群范围的内存缓存中。当数据需要反复访问时非常有用，比如查询一个小的热门数据集或者运行一个像 PageRank 这样的迭代算法。作为一个简单的示例，我们把 linesWithSpark 这个数据集缓存起来。
 
@@ -198,9 +204,9 @@ Spark 还支持把数据集拉到集群范围的内存缓存中。当数据需�
 用 Spark 浏览和缓存一个 100 行左右的文本文件看起来确实有点傻。但有趣的部分是这些相同的函数可以用于非常大的数据集，即使这些数据集分布在数十或数百个节点上。如 :ref:`rdd_programming_guide` 中描述的那样, 你也可以通过 bin/pyspark 连接到一个集群，交互式地执行上面那些操作。
 
 
-********************************
+************************
 自包含的(self-contained)应用程序
-********************************
+************************
 
 假设我们想使用 Spark API 编写一个自包含(self-contained)的 Spark 应用程序。下面我们将快速过一下一个简单的应用程序，分别使用 Scala(sbt编译)，Java(maven编译)和 Python(pip) 编写。
 
@@ -400,9 +406,9 @@ Spark 还支持把数据集拉到集群范围的内存缓存中。当数据需�
   Lines with a: 46, Lines with b: 23
 
 
-********************************
+***
 下一步
-********************************
+***
 
 恭喜您成功运行您的第一个 Spark 应用程序！
 
