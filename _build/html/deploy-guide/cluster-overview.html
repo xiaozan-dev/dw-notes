@@ -1,0 +1,318 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>集群模式概述 &mdash; Spark 2.2.x 中文文档 2.2.1 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="提交 Spark 应用程序" href="submitting-applications.html" />
+    <link rel="prev" title="机器学习库(MLib)编程指南" href="../programming-guide/ml-guide.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Spark 2.2.x 中文文档
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.2.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../programming-guide/quick-start.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming-guide/rdd-guide.html">RDD 编程指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming-guide/sql-guide.html">Spark SQL, DataFrame 和 Dataset 编程指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming-guide/structured-streaming-guide.html">Structured Streaming编程指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming-guide/streaming-guide.html">Spark Streaming 编程指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming-guide/ml-guide.html">机器学习库(MLib)编程指南</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">集群模式概述</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">组件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">集群管理器类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#spark">提交 Spark 应用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">监控</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">作业调度</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">术语表</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="submitting-applications.html">提交 Spark 应用程序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spark-standalone.html">Spark 独立模式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="running-on-mesos.html">在Mesos上运行Spark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="running-on-yarn.html">在 YARN 上运行 Spark</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../more-guide/configuration.html">Spark 配置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../more-guide/monitoring.html">监控和工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../more-guide/tuning.html">Spark 性能调优</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../more-guide/job-scheduling.html">Spark 任务调度</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../more-guide/security.html">Spark安全</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../more-guide/hardware-provisioning.html">硬件配置</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Spark 2.2.x 中文文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>集群模式概述</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/deploy-guide/cluster-overview.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="cluster-overview">
+<span id="id1"></span><h1>集群模式概述<a class="headerlink" href="#cluster-overview" title="永久链接至标题">¶</a></h1>
+<p>本文简要描述了如何在集群环境中运行 Spark,  以便更容易理解其中涉及到的各个组件。如果想了解如何在集群中启动 Spark 应用程序，请参考 Spark应用程序提交指南 这篇文章。</p>
+<div class="section" id="id2">
+<h2>组件<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>Spark 应用程序在集群上作为独立的进程集合运行, 这些进程之间通过主程序（也被称为 Driver 程序）中的 SparkContext 对象来进行协调。</p>
+<p>具体来说，为了能够在集群上运行应用程序, SparkContext 要能连接到多种类型的集群管理器（Spark 自带的 Standalone 集群管理器, Mesos 或 YARN）,  这些集群管理器用于在应用程序之间分配资源。一旦连接上集群管理器，Spark 会在集群中的各个节点上为应用程序申请 Executor 用于执行计算任务和存储数据。接着，Spark 将应用程序代码（传递给 SparkContext 的 JAR 包或者 Python 文件）发送给 Executor。最后 SparkContext 将 Task 分发给各个 Executor 执行。</p>
+<a class="reference external image-reference" href="http://spark.apache.org/docs/latest/cluster-overview.html"><img alt="../_images/cluster-overview.png" class="align-center" src="../_images/cluster-overview.png" style="width: 536.4px; height: 257.40000000000003px;" /></a>
+<p>这个架构中有几个值得注意的地方：</p>
+<ol class="arabic simple">
+<li><p>每个 Spark 应用程序都有自己的 Executor 进程，整个应用程序生命周期内 Executor 进程都保持着运行状态，并且以多线程方式运行所接收到的任务。这样的好处是，可以隔离各个 Spark 应用程序，从调度角度来看，每个 Driver 可以独立调度本应用程序内部的任务，从 Executor 角度来看，来自不同 Spark 应用程序的任务将会在不同的 JVM 中运行。然而这也意味着无法在多个 Spark 应用程序（SparkContext 实例）之间共享数据，除非把数据写到外部存储系统中。</p></li>
+<li><p>Spark 对底层的集群管理器一无所知。只要 Spark 能获取到执行器进程，并且能与之通信即可。这样即使在一个支持多种应用程序的集群管理器（如：Mesos 或 YARN）上运行 Spark 程序也相对比较容易。</p></li>
+<li><p>Driver 程序在整个生命周期内必须监听并接受其对应的各个 Executor 的连接请求（参考：spark.driver.port and spark.fileserver.port in the network config section）。因此，Driver 程序必须能够被所有 Worker 节点访问到。</p></li>
+<li><p>因为集群上的任务是由 Driver 来调度的，所以 Driver 应该在 Worker 节点附近运行，最好在同一个本地局域网内。如果你需要远程对集群发起请求，最好是开启到 Driver 的 RPC 服务并且让其就近提交操作，而不是在离集群 Worker 节点很远的地方运行 Driver。</p></li>
+</ol>
+</div>
+<div class="section" id="id3">
+<h2>集群管理器类型<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>Spark 目前支持以下3种集群管理器：</p>
+<ul class="simple">
+<li><p>Standalone – Spark 自带的一个简单的集群管理器，它使得启动一个 Spark 集群变得非常简单。</p></li>
+<li><p>Apache Mesos – 一个可以运行 Hadoop MapReduce 和服务型应用程序的通用集群管理器。</p></li>
+<li><p>Hadoop YARN – Hadoop 2 的资源管理器。</p></li>
+<li><p>Kubernetes (experimental) – 除上述之外，还有Kubernetes的实验支持。 Kubernetes是一个提供以容器为中心的基础设施的开源平台。 Kubernetes的支持正在积极开发在apache-spark-on-k8s Github组织中。 有关文档，请参阅该项目的自述文件.</p></li>
+</ul>
+</div>
+<div class="section" id="spark">
+<h2>提交 Spark 应用<a class="headerlink" href="#spark" title="永久链接至标题">¶</a></h2>
+<p>利用 spark-submit 脚本，可以向 Spark 所支持的任意一种集群管理器提交应用程序。更多详细信息请参见 Spark应用程序提交指南 这篇文章。</p>
+</div>
+<div class="section" id="id4">
+<h2>监控<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>每个 Driver 程序都有一个 web UI，通常会绑定到 4040 端口，它会展示集群上正在执行的 Tasks、Executors 以及存储空间使用等信息。你只需要在浏览器中输入 <a class="reference external" href="http:/">http:/</a>/&lt;driver-node&gt;:4040 这个地址即可访问这个 web UI。监控指南 这篇文章中描述了其它的一些监控选项。</p>
+</div>
+<div class="section" id="id5">
+<h2>作业调度<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>Spark 可以在应用程序之间（集群管理器这一层面）和之内（如：同一个SparkContext对象运行了多个计算作业）控制资源分配。更多详细信息参见 作业调度概览 这篇文章。</p>
+</div>
+<div class="section" id="id6">
+<h2>术语表<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p>下表总结了一些之前看到的集群概念相关的术语：</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 88%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>术语</p></th>
+<th class="head"><p>含义</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Application(应用程序)</p></td>
+<td><p>构建于 Spark 上的用户程序。它由集群上的一个驱动器（driver）和多个执行器（executor）组成。</p></td>
+</tr>
+<tr class="row-odd"><td><p>Application jar(应用程序jar)</p></td>
+<td><p>包含 Spark 应用程序的 jar 包。有时候，用户会想要把应用程序代码及其依赖打到一起，形成一个 “uber jar”（包含自身以及所有依赖库的jar包），注意这时候不要把 Spark 或 Hadoop 的库打进来，这些库会在运行时加载。</p></td>
+</tr>
+<tr class="row-even"><td><p>Driver Program(驱动器程序)</p></td>
+<td><p>运行 main 函数并创建 SparkContext 的进程。</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cluster Manager(集群管理器)</p></td>
+<td><p>用于在集群上分配资源的外部服务（如：Standalone 集群管理器、Mesos或者YARN。</p></td>
+</tr>
+<tr class="row-even"><td><p>Deploy Mode(部署模式)</p></td>
+<td><p>用于区分 Driver 进程在哪儿运行。在 “cluster” 模式下，框架在集群内部启动 Driver 程序；在 “client” 模式下，提交者在集群外部启动 Driver 程序。</p></td>
+</tr>
+<tr class="row-odd"><td><p>Worker Node(工作节点)</p></td>
+<td><p>集群中可以运行应用程序代码的任意一个节点。</p></td>
+</tr>
+<tr class="row-even"><td><p>Executor(执行器)</p></td>
+<td><p>在集群 Worker 节点上为某个应用程序启动的工作进程, 它专门用于运行计算任务，并在内存或磁盘上保存数据。每个应用程序都有自己的 Executor。</p></td>
+</tr>
+<tr class="row-odd"><td><p>Task(任务)</p></td>
+<td><p>下发给 Executor 的工作单元。</p></td>
+</tr>
+<tr class="row-even"><td><p>Job(作业)</p></td>
+<td><p>一个并行计算 Job 由一组 Task 组成，并由 Spark action（如：save、collect）触发启动；你将会在 Driver 的日志中看到这个术语。</p></td>
+</tr>
+<tr class="row-odd"><td><p>Stage(步骤)</p></td>
+<td><p>每个 Job 可以划分为多个更小的 Task 集合，这些 Task 集合称为 Stage，这些 Stage 彼此依赖形成一个有向无环图（类似于 MapReduce 中的 map 和 reduce）；你将会在 Driver 的日志中看到这个术语。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="submitting-applications.html" class="btn btn-neutral float-right" title="提交 Spark 应用程序" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../programming-guide/ml-guide.html" class="btn btn-neutral float-left" title="机器学习库(MLib)编程指南" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, jackiehff
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,519 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Spark 2.2.x 中文官方参考文档 &mdash; Spark 2.2.x 中文文档 2.2.1 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="快速入门" href="programming-guide/quick-start.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="#" class="icon icon-home"> Spark 2.2.x 中文文档
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.2.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="programming-guide/quick-start.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="programming-guide/rdd-guide.html">RDD 编程指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="programming-guide/sql-guide.html">Spark SQL, DataFrame 和 Dataset 编程指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="programming-guide/structured-streaming-guide.html">Structured Streaming编程指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="programming-guide/streaming-guide.html">Spark Streaming 编程指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="programming-guide/ml-guide.html">机器学习库(MLib)编程指南</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="deploy-guide/cluster-overview.html">集群模式概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deploy-guide/submitting-applications.html">提交 Spark 应用程序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deploy-guide/spark-standalone.html">Spark 独立模式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deploy-guide/running-on-mesos.html">在Mesos上运行Spark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deploy-guide/running-on-yarn.html">在 YARN 上运行 Spark</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="more-guide/configuration.html">Spark 配置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="more-guide/monitoring.html">监控和工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="more-guide/tuning.html">Spark 性能调优</a></li>
+<li class="toctree-l1"><a class="reference internal" href="more-guide/job-scheduling.html">Spark 任务调度</a></li>
+<li class="toctree-l1"><a class="reference internal" href="more-guide/security.html">Spark安全</a></li>
+<li class="toctree-l1"><a class="reference internal" href="more-guide/hardware-provisioning.html">硬件配置</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Spark 2.2.x 中文文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>Spark 2.2.x 中文官方参考文档</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="spark-2-2-x">
+<h1>Spark 2.2.x 中文官方参考文档<a class="headerlink" href="#spark-2-2-x" title="永久链接至标题">¶</a></h1>
+</div>
+<div class="section" id="id1">
+<h1>编程指南<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="programming-guide/quick-start.html">快速入门</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="programming-guide/quick-start.html#spark-shell">使用 Spark Shell 进行交互式分析</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/quick-start.html#id2">基础知识</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/quick-start.html#dataset">更多 Dataset 算子</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/quick-start.html#id4">缓存</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="programming-guide/quick-start.html#self-contained">自包含的(self-contained)应用程序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming-guide/quick-start.html#id5">下一步</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="programming-guide/rdd-guide.html">RDD 编程指南</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="programming-guide/rdd-guide.html#id1">概述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming-guide/rdd-guide.html#spark">链接 Spark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming-guide/rdd-guide.html#id2">初始化 Spark</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/rdd-guide.html#shell">使用 Shell</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="programming-guide/rdd-guide.html#id3">弹性分布式数据集(RDD)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/rdd-guide.html#id4">并行集合</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/rdd-guide.html#id5">外部数据集</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/rdd-guide.html#id6">RDD 算子</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/rdd-guide.html#id15">RDD持久化</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="programming-guide/rdd-guide.html#id18">共享变量</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/rdd-guide.html#id19">广播变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/rdd-guide.html#id20">累加器</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="programming-guide/rdd-guide.html#id21">部署到集群</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming-guide/rdd-guide.html#java-scalaspark">从Java/Scala中启动Spark作业</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming-guide/rdd-guide.html#id22">单元测试</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming-guide/rdd-guide.html#id23">下一步</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="programming-guide/sql-guide.html">Spark SQL, DataFrame 和 Dataset 编程指南</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="programming-guide/sql-guide.html#id1">概述</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/sql-guide.html#sql">SQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/sql-guide.html#dataset-dataframe">Dataset 和 DataFrame</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="programming-guide/sql-guide.html#id2">入门</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/sql-guide.html#sparksession">入口: SparkSession</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/sql-guide.html#dataframe">创建 DataFrame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/sql-guide.html#id3">无类型的 Dataset 操作 (亦即 DataFrame 操作)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/sql-guide.html#running-sql-queries-programmatically">Running SQL Queries Programmatically</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/sql-guide.html#global-temporary-view">Global Temporary View</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/sql-guide.html#dataset">创建 Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/sql-guide.html#rdd">与 RDD 互操作</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/sql-guide.html#id4">聚合</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="programming-guide/sql-guide.html#id5">数据源</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/sql-guide.html#generic-load-save-functions">Generic Load/Save Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/sql-guide.html#parquet">Parquet 文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/sql-guide.html#json-datasets">JSON Datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/sql-guide.html#hive-tables">Hive Tables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/sql-guide.html#specifying-storage-format-for-hive-tables">Specifying storage format for Hive tables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/sql-guide.html#hive-metastore">与不同版本的Hive Metastore交互</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/sql-guide.html#jdbc-to-other-databases">JDBC To Other Databases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/sql-guide.html#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="programming-guide/sql-guide.html#id12">性能调优</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/sql-guide.html#id13">缓存数据到内存中</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/sql-guide.html#id14">其它配置选项</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="programming-guide/sql-guide.html#id15">分布式 SQL 引擎</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/sql-guide.html#thrift-jdbc-odbc">运行 Thrift JDBC/ODBC 服务器</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/sql-guide.html#spark-sql-cli">运行 Spark SQL CLI</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="programming-guide/sql-guide.html#id16">迁移指南</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/sql-guide.html#spark-sql-2-1-2-2">Spark SQL 从 2.1 版本升级到2.2 版本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/sql-guide.html#spark-sql-2-0-2-1">Spark SQL 从 2.0 版本升级到 2.1 版本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/sql-guide.html#spark-sql-1-6-2-0">Spark SQL 从 1.6 版本升级到 2.0 版本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/sql-guide.html#spark-sql-1-5-1-6">Spark SQL 从 1.5 版本升级到 1.6 版本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/sql-guide.html#spark-sql-1-4-1-5">Spark SQL 从 1.4 版本升级到 1.5 版本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/sql-guide.html#spark-sql-1-3-1-4">Spark SQL 从 1.3 版本升级到 1.4 版本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/sql-guide.html#spark-sql-1-0-1-2-1-3">Spark SQL 从 1.0-1.2 版本升级到 1.3 版本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/sql-guide.html#apache-hive">兼容Apache Hive</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="programming-guide/sql-guide.html#id26">参考</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/sql-guide.html#id27">数据类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/sql-guide.html#nan">NaN 语义</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="programming-guide/structured-streaming-guide.html">Structured Streaming编程指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="programming-guide/streaming-guide.html">Spark Streaming 编程指南</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="programming-guide/streaming-guide.html#id1">概述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming-guide/streaming-guide.html#id2">一个小例子</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming-guide/streaming-guide.html#id3">基本概念</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/streaming-guide.html#id4">链接依赖项</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/streaming-guide.html#streamingcontext">初始化 StreamingContext</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/streaming-guide.html#dstreams">离散数据流(DStreams)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/streaming-guide.html#dstream">输入DStream和接收器</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/streaming-guide.html#dstreamtransformation">DStream支持的transformation算子</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/streaming-guide.html#id9">DStream输出算子</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/streaming-guide.html#dataframe-sql">DataFrame 和 SQL 算子</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/streaming-guide.html#mllib">MLlib 算子</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/streaming-guide.html#id10">缓存/持久化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/streaming-guide.html#id11">检查点</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/streaming-guide.html#id14">累加器, 广播变量以及检查点</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/streaming-guide.html#id15">部署应用程序</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/streaming-guide.html#id18">应用程序监控</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="programming-guide/streaming-guide.html#id19">性能调优</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/streaming-guide.html#id20">减少批次处理时间</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/streaming-guide.html#id25">设置合适的批次间隔</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/streaming-guide.html#id26">内存调优</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="programming-guide/streaming-guide.html#id27">容错语义</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/streaming-guide.html#id28">背景</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/streaming-guide.html#id29">定义</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/streaming-guide.html#id30">基础语义</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming-guide/streaming-guide.html#id31">接收数据语义</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="programming-guide/streaming-guide.html#id35">下一步</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="programming-guide/ml-guide.html">机器学习库(MLib)编程指南</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id2">
+<h1>部署<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="deploy-guide/cluster-overview.html">集群模式概述</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="deploy-guide/cluster-overview.html#id2">组件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy-guide/cluster-overview.html#id3">集群管理器类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy-guide/cluster-overview.html#spark">提交 Spark 应用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy-guide/cluster-overview.html#id4">监控</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy-guide/cluster-overview.html#id5">作业调度</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy-guide/cluster-overview.html#id6">术语表</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="deploy-guide/submitting-applications.html">提交 Spark 应用程序</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="deploy-guide/submitting-applications.html#id1">应用程序依赖打包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy-guide/submitting-applications.html#spark-submit">使用 spark-submit 启动应用程序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy-guide/submitting-applications.html#master-urls">Master URLs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy-guide/submitting-applications.html#id4">从文件中加载配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy-guide/submitting-applications.html#id5">高级依赖管理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy-guide/submitting-applications.html#id6">更多信息</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="deploy-guide/spark-standalone.html">Spark 独立模式</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="deploy-guide/spark-standalone.html#id1">Spark集群独立安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy-guide/spark-standalone.html#id2">手动启动集群</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy-guide/spark-standalone.html#id3">集群启动脚本</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy-guide/spark-standalone.html#id4">连接应用程序到集群</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy-guide/spark-standalone.html#id5">启动Spark应用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy-guide/spark-standalone.html#id6">资源调度</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy-guide/spark-standalone.html#id7">监控和日志</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy-guide/spark-standalone.html#hadoop">和Hadoop同时运行</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy-guide/spark-standalone.html#id8">网络安全端口配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy-guide/spark-standalone.html#id9">高可用性</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deploy-guide/spark-standalone.html#zookeepermaster">基于Zookeeper的热备master</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deploy-guide/spark-standalone.html#id10">基于本地文件系统的单点恢复</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="deploy-guide/running-on-mesos.html">在Mesos上运行Spark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deploy-guide/running-on-yarn.html">在 YARN 上运行 Spark</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="deploy-guide/running-on-yarn.html#yarn">在YARN上启动</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy-guide/running-on-yarn.html#jar">增加其他JAR包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy-guide/running-on-yarn.html#id1">准备</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy-guide/running-on-yarn.html#id2">配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy-guide/running-on-yarn.html#id3">调试应用程序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy-guide/running-on-yarn.html#id4">重要提示</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy-guide/running-on-yarn.html#id5">在安全的集群中运行</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy-guide/running-on-yarn.html#shuffle">配置外部的 Shuffle 服务</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy-guide/running-on-yarn.html#apache-oozie">使用 Apache Oozie启动应用程序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy-guide/running-on-yarn.html#troubleshooting-kerberos">Troubleshooting Kerberos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy-guide/running-on-yarn.html#spark-history-server-spark-web-ui">使用 Spark History Server 替代 Spark Web UI</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id3">
+<h1>更多<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="more-guide/configuration.html">Spark 配置</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="more-guide/configuration.html#id1">Spark属性</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="more-guide/configuration.html#id2">动态加载 Spark 属性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more-guide/configuration.html#id3">查看Spark属性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more-guide/configuration.html#id4">可用的属性</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="more-guide/configuration.html#id16">环境变量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more-guide/configuration.html#id17">日志配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more-guide/configuration.html#id18">覆盖配置目录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more-guide/configuration.html#hadoop">继承Hadoop集群配置</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="more-guide/monitoring.html">监控和工具</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="more-guide/monitoring.html#web">Web界面</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more-guide/monitoring.html#id2">事后查看</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more-guide/monitoring.html#id3">环境变量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more-guide/monitoring.html#spark">Spark 配置选项</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more-guide/monitoring.html#rest-api">REST API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more-guide/monitoring.html#api-versioning-policy">API Versioning Policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more-guide/monitoring.html#id4">度量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more-guide/monitoring.html#id5">高级工具</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="more-guide/tuning.html">Spark 性能调优</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="more-guide/tuning.html#id1">数据序列化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more-guide/tuning.html#id2">内存调优</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="more-guide/tuning.html#id3">内存管理概述</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more-guide/tuning.html#id4">确定内存消耗</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more-guide/tuning.html#id5">调整数据结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more-guide/tuning.html#rdd">序列化的 RDD 存储</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more-guide/tuning.html#id6">垃圾回收调优</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="more-guide/tuning.html#id7">其它考虑事项</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="more-guide/tuning.html#id8">并行度</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more-guide/tuning.html#reduce">Reduce 任务的内存使用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more-guide/tuning.html#id9">广播超大变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more-guide/tuning.html#id10">数据本地化</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="more-guide/tuning.html#id11">小结</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="more-guide/job-scheduling.html">Spark 任务调度</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="more-guide/job-scheduling.html#id1">概览</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more-guide/job-scheduling.html#id2">Spark应用之间的资源调度</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="more-guide/job-scheduling.html#id3">动态资源分配</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="more-guide/job-scheduling.html#id4">Spark应用内部的资源调度</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="more-guide/job-scheduling.html#id5">公平调度资源池</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more-guide/job-scheduling.html#id6">资源池默认行为</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more-guide/job-scheduling.html#id7">配置资源池属性</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="more-guide/security.html">Spark安全</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="more-guide/security.html#web-ui">Web UI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="more-guide/security.html#id1">认证</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="more-guide/security.html#id2">事件日志</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more-guide/security.html#id3">加密</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="more-guide/security.html#ssl">SSL配置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more-guide/security.html#yarn">YARN模式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more-guide/security.html#id4">独立模式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more-guide/security.html#key-stores">准备key-stores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more-guide/security.html#sasl">配置SASL加密</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="more-guide/security.html#id5">配置网络安全端口</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="more-guide/security.html#id6">仅独立部署适用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more-guide/security.html#id7">所有集群管理器适用</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="more-guide/hardware-provisioning.html">硬件配置</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="more-guide/hardware-provisioning.html#id2">存储系统</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more-guide/hardware-provisioning.html#id3">本地磁盘</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more-guide/hardware-provisioning.html#id4">内存</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more-guide/hardware-provisioning.html#id5">网络</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more-guide/hardware-provisioning.html#cpu-cores">CPU Cores</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="永久链接至标题">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">索引</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">模块索引</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">搜索页面</span></a></p></li>
+</ul>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="programming-guide/quick-start.html" class="btn btn-neutral float-right" title="快速入门" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, jackiehff
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
